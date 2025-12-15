@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  apache:
+    image: httpd:2.4
+    ports:
+      - "8080:80"
+    depends_on:
+      - app
+    volumes:
+      # 設定ファイル
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./src:/var/www/html
+    networks:
+      - laravel_network
+  app:
+    build: ./docker/php/
+    depends_on:
+      - mysql
+    volumes:
+      - ./src:/var/www/html
+    networks:
+      - laravel_network
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel_network
+networks:
+  laravel_network:
+volumes:
+  mysql_data:
