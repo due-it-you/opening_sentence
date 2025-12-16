@@ -10,7 +10,7 @@ services:
     volumes:
       # 設定ファイル
       - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - ./src/public:/var/www/html/public
+      - ./src/public:/var/www/html/public:ro
     networks:
       - laravel_network
   app:
