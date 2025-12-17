@@ -4,9 +4,14 @@
   </head>
   <body>
     <div>
-      <div class="container">
-        @yield('content')
-      </div>
+      <header>
+        @yield('header')
+      </header>
+      <main>
+        <div class="container">
+          @yield('content')
+        </div>
+      </main>
     </div>
   </body>
 </html>
