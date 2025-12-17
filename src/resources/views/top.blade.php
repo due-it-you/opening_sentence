@@ -3,7 +3,7 @@
 @section('title', 'トップページ')
 
 @section('header')
-  <div>
+  <div class="bg-gray-400">
     ヘッダーです。
   </div>
 @endsection
