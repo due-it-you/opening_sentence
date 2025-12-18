@@ -4,7 +4,7 @@
 
 @section('header')
   <div class="bg-gray-200 h-16">
-    ヘッダーです。
+    <a href="{{ route('signup') }}">新規登録</a>
   </div>
 @endsection
 

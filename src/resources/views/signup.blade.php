@@ -10,6 +10,6 @@
 
 @section('content')
   <div>
-    
+    新規登録
   </div>
 @endsection
