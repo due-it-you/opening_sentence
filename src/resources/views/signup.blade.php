@@ -19,7 +19,7 @@
         @csrf
         <div>
           <label for="name">ユーザーネーム</label>
-          <input id="name" name="name" type="text" class="border border-gray-600" placeholder="xxxx@example.com">
+          <input id="name" name="name" type="text" class="border border-gray-600">
         </div>
         <div>
           <label for="email">メールアドレス</label>
