@@ -5,7 +5,7 @@ use App\Models\User;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\SignupUserRequest;
+use App\Http\Requests\SignupUserRequest;
 
 class SignupController extends Controller
 {
