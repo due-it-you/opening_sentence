@@ -17,6 +17,7 @@
     <div>
       <form method="POST" action="{{ route('signup.store') }}">
         @csrf
+        <!-- エラーメッセージの表示 -->
         @if ($errors->any())
           <div>
             <ul>
