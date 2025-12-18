@@ -27,4 +27,22 @@ class SignupUserRequest extends FormRequest
             'password' => 'required'
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            'name' => 'ユーザーネーム',
+            'email' => 'メールアドレス',
+            'password' => 'パスワード'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => ':attributeの入力は必須です。',
+            'email.required' => ':attributeの入力は必須です。',
+            'password.required' => ':attributeの入力は必須です。'
+        ];
+    }
 }
