@@ -8,4 +8,4 @@ Route::get('/', function () {
 
 Route::get('/signup', function () {
     return view('signup');
-});
+})->name('signup');
