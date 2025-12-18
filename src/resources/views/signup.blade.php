@@ -18,7 +18,7 @@
       <form action="POST" action="">
         @csrf
         <div>
-          <label for="email">ユーザーネーム</label>
+          <label for="name">ユーザーネーム</label>
           <input id="name" name="name" type="text" class="border border-gray-600" placeholder="xxxx@example.com">
         </div>
         <div>
