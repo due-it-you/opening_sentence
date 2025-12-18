@@ -5,6 +5,7 @@ use App\Models\User;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\SignupUserRequest;
 
 class SignupController extends Controller
@@ -22,6 +23,6 @@ class SignupController extends Controller
             'password' => Hash::make($validated['password'])
         ]);
 
-        return redirect('top')->with('success', '新規登録が完了しました！');
+        return redirect('/')->with('success', '新規登録が完了しました！');
     }
 }
