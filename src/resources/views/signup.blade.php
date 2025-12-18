@@ -10,13 +10,6 @@
 
 @section('content')
   <div>
-    @if ($errors->any())
-      <ul>
-        @foreach ($errors as $error)
-          <li>{{ $error }}</li>
-        @endforeach
-      </ul>
-    @endif
     <div class="font-bold">
       アカウント新規登録
     </div>
@@ -24,6 +17,15 @@
     <div>
       <form method="POST" action="{{ route('signup.store') }}">
         @csrf
+        @if ($errors->any())
+          <div>
+            <ul>
+              @foreach ($errors->all() as $error)
+                <li class="text-red-600">{{ $error }}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
         <div>
           <label for="name">ユーザーネーム</label>
           <input id="name" name="name" type="text" class="border border-gray-600">
