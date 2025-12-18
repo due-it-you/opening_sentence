@@ -10,6 +10,13 @@
 
 @section('content')
   <div>
+    @if (session('success'))
+      <div class="text-green-400">
+        {{ session('success') }}
+      </div>
+    @endif
+  </div>
+  <div>
     トップページです！
   </div>
 @endsection

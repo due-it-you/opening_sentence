@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\SignupController;
+
 Route::get('/', function () {
     return view('top');
 });
@@ -9,3 +11,6 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('signup');
 })->name('signup');
+
+Route::post('/signup', [SignupController::class, 'store'])
+            ->name('signup.store');
