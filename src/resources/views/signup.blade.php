@@ -15,7 +15,7 @@
     </div>
     <!-- 新規登録フォーム -->
     <div>
-      <form action="POST" action="">
+      <form action="POST" action="{{ route('signup.store') }}">
         @csrf
         <div>
           <label for="name">ユーザーネーム</label>
