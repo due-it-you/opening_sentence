@@ -14,8 +14,7 @@ class SignupController extends Controller
      */
     public function store(SignupUserRequest $request): RedirectResponse
     {
-        $validated = $request->validate([
-        ]);
+        $validated = $request->validated();
 
         User::create([
             'name' => $validated['name'],
