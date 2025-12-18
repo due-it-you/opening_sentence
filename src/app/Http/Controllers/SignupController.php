@@ -5,18 +5,16 @@ use App\Models\User;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\SignupUserRequest;
 
 class SignupController extends Controller
 {
     /**
      * ユーザーの新規登録
      */
-    public function store(Request $request): RedirectResponse
+    public function store(SignupUserRequest $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'required|max:10',
-            'email' => 'required',
-            'password' => 'required'
         ]);
 
         User::create([
