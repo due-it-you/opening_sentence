@@ -8,6 +8,13 @@
         <form action="" method="POST">
             @csrf
             <div>
+                @if ($errors->has('login'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('login') }}
+                    </div>
+                @endif
+            </div>
+            <div>
                 <label for="email">メールアドレス</label>
                 <input type="email" name="email" id="email" class="border">
             </div>
