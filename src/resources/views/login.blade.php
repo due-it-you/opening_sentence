@@ -5,7 +5,7 @@
 @section('content')
     <div>
         ログイン
-        <form action="" method="POST">
+        <form action="{{ route('login.authenticate') }}" method="POST">
             @csrf
             <div>
                 @if ($errors->has('login'))
