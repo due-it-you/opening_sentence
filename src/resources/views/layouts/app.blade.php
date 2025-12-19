@@ -9,7 +9,9 @@
   <body>
     <div>
       <header>
-        @yield('header')
+        <div class="bg-gray-200 h-16">
+          <a href="">新規登録</a>
+        </div>
       </header>
       <main>
         <div class="container">
