@@ -14,3 +14,7 @@ Route::get('/signup', function () {
 
 Route::post('/signup', [SignupController::class, 'store'])
             ->name('signup.store');
+
+Route::get('/login', function () {
+    return view('login');
+});
