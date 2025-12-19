@@ -26,4 +26,12 @@ class LoginAuthenticateRequest extends FormRequest
             'password' => 'required'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'メールアドレスは入力が必須です。',
+            'password.required' => 'パスワードは入力が必須です。'
+        ];
+    }
 }
