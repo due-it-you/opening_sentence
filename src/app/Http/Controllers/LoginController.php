@@ -17,7 +17,7 @@ class LoginController extends Controller
             # セッション固定攻撃を防ぐためのセッションの再生成
             $request->session()->regenerate();
 
-            return redirect()->intended('top');
+            return redirect()->intended('top')->with('success', 'ログインしました。');
         }
 
         return back()->withErrors([
