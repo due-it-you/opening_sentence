@@ -22,6 +22,9 @@
                 <label for="password">パスワード</label>
                 <input type="password" name="password" id="password" class="border">
             </div>
+            <div>
+                <input type="submit" value="送信" class="border">
+            </div>
         </form>
     </div>
 @endsection
