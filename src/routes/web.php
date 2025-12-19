@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SignupController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthSessionController;
 
 Route::get('/', function () {
     return view('top');
@@ -20,5 +20,8 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::post('/login', [LoginController::class, 'authenticate'])
+Route::post('/login', [AuthSessionController::class, 'authenticate'])
     ->name('login.authenticate');
+
+Route::post('/logout', [AuthSessionController::class, 'logout'])
+    ->name('logout');
