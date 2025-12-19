@@ -14,6 +14,9 @@
             <div class="bg-gray-200 h-16">
                 <a href="{{ route('signup') }}">新規登録</a>
                 <a href="{{ route('login') }}">ログイン</a>
+                @auth
+                    ログイン済みです
+                @endauth
             </div>
         </header>
         <main>
