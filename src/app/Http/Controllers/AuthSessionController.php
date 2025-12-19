@@ -29,8 +29,10 @@ class AuthSessionController extends Controller
     {
         Auth::logout();
 
+        # ユーザーのセッションの無効化(セキュリティ面)
         $request->session()->invalidate();
 
+        # CSRFトークンの再生成(セキュリティ面)
         $request->session()->regenerateToken();
 
         return redirect('/');
