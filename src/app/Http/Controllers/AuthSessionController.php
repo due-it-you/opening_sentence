@@ -7,7 +7,7 @@ use App\Http\Requests\LoginAuthenticateRequest;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-class LoginController extends Controller
+class AuthSessionController extends Controller
 {
     public function authenticate(LoginAuthenticateRequest $request)
     {
