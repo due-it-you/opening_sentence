@@ -15,7 +15,12 @@
                 <a href="{{ route('signup') }}">新規登録</a>
                 <a href="{{ route('login') }}">ログイン</a>
                 @auth
-                    ログイン済みです
+                    <div>
+                      <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="border rounded-md bg-red-400 text-white font-bold px-2 py-1">ログアウト</button>
+                      </form>
+                    </div>
                 @endauth
             </div>
         </header>
