@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function create()
+    {
+        return view('posts.create');
+    }
+
     /**
      * 書き出し小説の投稿の新規作成
      */
