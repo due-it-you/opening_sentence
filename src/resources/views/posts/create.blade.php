@@ -4,6 +4,15 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+    <div>
         投稿作成フォーム
         <form method="POST" action="{{ route('posts.store') }}">
             @csrf

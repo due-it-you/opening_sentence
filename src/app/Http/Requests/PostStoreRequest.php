@@ -25,4 +25,12 @@ class PostStoreRequest extends FormRequest
             'body' => 'required|max:50'
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'body.required' => '投稿の内容は必須です。',
+            'body.max' => '投稿の内容は50文字以内にしてください。'
+        ];
+    }
 }
