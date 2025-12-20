@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AuthSessionController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return view('top');
@@ -25,3 +26,5 @@ Route::post('/login', [AuthSessionController::class, 'authenticate'])
 
 Route::post('/logout', [AuthSessionController::class, 'logout'])
     ->name('logout');
+
+Route::resource('posts', PostController::class);
