@@ -32,4 +32,5 @@ Route::get('/posts/create', function () {
 })->name('posts.create');
 
 Route::post('/posts', [PostController::class, 'store'])
-    ->name('posts.store');
+    ->name('posts.store')
+    ->middleware('auth');
