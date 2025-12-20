@@ -27,6 +27,9 @@ Route::post('/login', [AuthSessionController::class, 'authenticate'])
 Route::post('/logout', [AuthSessionController::class, 'logout'])
     ->name('logout');
 
-Route::get('/posts/create', function() {
+Route::get('/posts/create', function () {
     return view('posts.create');
 })->name('posts.create');
+
+Route::post('/posts', [PostController::class, 'store'])
+    ->name('posts.store');
