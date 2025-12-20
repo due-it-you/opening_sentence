@@ -31,6 +31,4 @@ Route::get('/posts/create', function () {
     return view('posts.create');
 })->name('posts.create');
 
-Route::post('/posts', [PostController::class, 'store'])
-    ->name('posts.store')
-    ->middleware('auth');
+Route::resource('posts', PostController::class);
