@@ -7,6 +7,7 @@ use App\Http\Requests\PostStoreRequest;
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PostController extends Controller
 {
@@ -46,5 +47,12 @@ class PostController extends Controller
         $validated = $request->validated();
         $post->update($validated);
         return redirect('/posts')->with('success', '投稿の内容を更新しました。');
+    }
+
+    public function destroy(Post $post): RedirectResponse
+    {
+        $this->authorize('destroy', $post);
+        $post->delete();
+        return redirect('/posts')->with('success', '投稿を削除しました。');
     }
 }

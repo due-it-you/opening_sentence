@@ -10,7 +10,17 @@
                     {{ $post->body }}
                 </div>
                 <div>
-                    <a href="{{ route('posts.edit', $post->id)}}" class="border px-2 py-1">編集</a>
+                    <a href="{{ route('posts.edit', $post->id) }}" class="border px-2 py-1">編集</a>
+                </div>
+                <div>
+                    <form 
+                        action="{{ route('posts.destroy', $post) }}" 
+                        method="POST"
+                        onsubmit="return confirm('本当に削除しますか？');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="border">削除</button>
+                    </form>
                 </div>
             </div>
         @endforeach
