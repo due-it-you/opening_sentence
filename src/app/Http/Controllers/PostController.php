@@ -41,8 +41,9 @@ class PostController extends Controller
 
     public function update(PostStoreRequest $request, Post $post)
     {
+        $this->authorize('update', $post);
         $validated = $request->validated();
         $post->update($validated);
-        return redirect('/posts')->with('投稿の内容を更新しました。');
+        return redirect('/posts')->with('success', '投稿の内容を更新しました。');
     }
 }
