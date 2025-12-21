@@ -10,7 +10,7 @@
                     {{ $post->body }}
                 </div>
                 <div>
-                    <a href="" class="border px-2 py-1">編集</a>
+                    <a href="{{ route('posts.edit', $post->id)}}" class="border px-2 py-1">編集</a>
                 </div>
             </div>
         @endforeach
