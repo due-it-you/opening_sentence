@@ -3,4 +3,17 @@
 @section('title', '投稿作成')
 
 @section('content')
+    <div>
+        投稿編集ページ
+        <div>
+            <form action="{{ route('posts.update', $post->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <div>
+                    <input type="text" name="body" id="body" class="border" value="{{ $post->body }}">
+                    <input type="submit" class="border">
+                </div>
+            </form>
+        </div>
+    </div>
 @endsection
