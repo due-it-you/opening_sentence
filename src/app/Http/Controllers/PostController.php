@@ -12,7 +12,12 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Auth::user()->posts()->get();
+        $user = Auth::user();
+        # ログイン済みならユーザーの全ての投稿を取得 / ログインしていないなら空のコレクション
+        $posts = $user
+            ? Auth::user()->posts()->get()
+            : collect();
+
         return view('posts.index', compact('posts'));
     }
 
