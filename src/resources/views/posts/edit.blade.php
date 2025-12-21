@@ -6,7 +6,7 @@
     <div>
         投稿編集ページ
         <div>
-            <form action="{{ route('posts.update', $post->id) }}" method="POST">
+            <form action="{{ route('posts.update', $post) }}" method="POST">
                 @csrf
                 @method('PATCH')
                 <div>
