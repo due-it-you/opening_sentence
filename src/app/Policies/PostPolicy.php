@@ -16,6 +16,14 @@ class PostPolicy
     }
 
     /**
+     * 指定された投稿をユーザーが閲覧可能か判定
+     */
+    public function edit(?User $user, Post $post)
+    {
+        return $user->id === $post->user_id;
+    }
+
+    /**
      * 指定された投稿をユーザーが更新可能か判定
      */
     public function update(?User $user, Post $post): bool
