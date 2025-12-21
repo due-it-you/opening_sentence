@@ -42,4 +42,11 @@ class PostController extends Controller
     {
         return view('posts.edit', compact('post'));
     }
+
+    public function update(PostStoreRequest $request, Post $post)
+    {
+        $validated = $request->validated();
+        $post->update($validated);
+        return redirect('/posts')->with('投稿の内容を更新しました。');
+    }
 }
