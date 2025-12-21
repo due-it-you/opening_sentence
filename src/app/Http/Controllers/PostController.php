@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostStoreRequest;
 
-use App\Models\User;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -36,5 +36,10 @@ class PostController extends Controller
         $request->user()->posts()->create($validated);
 
         return redirect('/')->with('success', '新しく投稿をしました。');
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
     }
 }
