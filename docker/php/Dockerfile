@@ -35,7 +35,7 @@ RUN composer global require "laravel/installer"
 ## 本番環境
 FROM base AS production
 
-開発用パッケージを除いたComposerの依存関係のインストール
+# 開発用パッケージを除いたComposerの依存関係のインストール
 RUN composer install --no-dev --optimize-autoloader
 
 # npmパッケージのインストールとビルド
