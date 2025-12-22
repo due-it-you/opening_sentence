@@ -1,2 +1,3 @@
 FROM httpd:2.4
-COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY docker/apache/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY src/public /var/www/html/public
