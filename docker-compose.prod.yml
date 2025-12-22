@@ -12,8 +12,6 @@ services:
       - laravel_network
   app:
     build: ./docker/php/
-    volumes:
-      - ./src:/var/www/html
     networks:
       - laravel_network
 networks:
