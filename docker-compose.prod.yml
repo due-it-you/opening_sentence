@@ -15,6 +15,7 @@ services:
     build: 
       context: .
       dockerfile: ./docker/php/Dockerfile
+      target: production
     networks:
       - laravel_network
 networks:

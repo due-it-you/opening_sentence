@@ -19,6 +19,7 @@ services:
     build:       
       context: .
       dockerfile: ./docker/php/Dockerfile
+      target: development
     depends_on:
       - mysql
     volumes:
