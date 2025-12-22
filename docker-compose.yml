@@ -3,7 +3,8 @@ version: "3.8"
 services:
   apache:
     build:
-      context: ./docker/apache
+      context: .
+      dockerfile: ./docker/apache/Dockerfile
     ports:
       - "8080:80"
     depends_on:
@@ -15,7 +16,9 @@ services:
     networks:
       - laravel_network
   app:
-    build: ./docker/php/
+    build:       
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     depends_on:
       - mysql
     volumes:
