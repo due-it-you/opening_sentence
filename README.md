@@ -2,6 +2,8 @@
 開発環境は、**Apache, php-fpm(Laravel), MySQLを各コンテナに載せて構築**しています。
 
 ### 処理の流れ
+静的ファイルの場合はApacheがそのまま静的ファイルを返し、静的ファイル以外はphp-fpm側に処理を投げてレスポンスの内容をクライアント側に返すような設定をApacheの設定ファイル`httpd.conf`に記載。
+
 1. `/about`が打ち込まれる
 2. Webサーバー(Apache)にリクエストが送信される
 3. `httpd.conf`の`DocumentRoot`に基づいて、`var/www/html/public/about`を探す
