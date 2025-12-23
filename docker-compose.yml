@@ -9,6 +9,8 @@ services:
       - "8080:80"
     depends_on:
       - app
+    environment:
+      FASTCGI_PASS: app:9000
     volumes:
       # 設定ファイル
       - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
