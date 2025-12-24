@@ -6,8 +6,14 @@
   <div>
     <form action="{{ route('admin.login') }}" method="POST">
       @csrf
-      <input type="email" name="email" id="email" class="border">
-      <input type="password" name="password" id="password" class="border">
+      <div>
+        <label for="email">メールアドレス：</label>
+        <input type="email" name="email" id="email" class="border">
+      </div>
+      <div>
+        <label for="password">パスワード：</label>
+        <input type="password" name="password" id="password" class="border">
+      </div>
       <input type="submit">
     </form>
   </div>
