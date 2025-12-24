@@ -39,4 +39,5 @@ Route::get('/admin/login', function() {
     return view('admin.login');
 });
 
-Route::post('/admin/login', [AdminLoginController::class, 'authenticate']);
+Route::post('/admin/login', [AdminLoginController::class, 'authenticate'])
+        ->name('admin.login');
