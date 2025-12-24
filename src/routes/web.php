@@ -32,3 +32,8 @@ Route::get('/posts/create', function () {
 })->name('posts.create');
 
 Route::resource('posts', PostController::class);
+
+## 管理者関連のルーティング ##
+Route::get('/admin/login', function() {
+    return view('admin.login');
+});
