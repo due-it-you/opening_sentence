@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AuthSessionController;
+use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
@@ -37,3 +38,5 @@ Route::resource('posts', PostController::class);
 Route::get('/admin/login', function() {
     return view('admin.login');
 });
+
+Route::post('/admin/login', [AdminLoginController::class, 'authenticate']);
