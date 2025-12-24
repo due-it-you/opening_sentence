@@ -4,7 +4,7 @@
 
 @section('content')
   <div>
-    <form action="" method="POST">
+    <form action="{{ route('admin.login') }}" method="POST">
       @csrf
       <input type="email" name="email" id="email" class="border">
       <input type="password" name="password" id="password" class="border">
