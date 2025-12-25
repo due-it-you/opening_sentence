@@ -46,3 +46,7 @@ Route::post('/admin/login', [AdminLoginController::class, 'authenticate'])
 Route::get('/admin/dashboard', function() {
     return view('admin.dashboard');
 })->middleware(EnsureUserIsAdmin::class);
+
+Route::post('/admin/logout', [AdminLoginController::class, 'logout'])
+        ->name('admin.logout')
+        ->middleware(EnsureUserIsAdmin::class);
