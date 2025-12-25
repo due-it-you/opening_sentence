@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AdminUser;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
 {
@@ -19,7 +20,7 @@ class AdminUserSeeder extends Seeder
         DB::table('admin_users')->insert([
             'name' => '管理',
             'email' => 'example@example.com',
-            'password' => 'example-house'
+            'password' => Hash::make('password')
         ]);
     }
 }
