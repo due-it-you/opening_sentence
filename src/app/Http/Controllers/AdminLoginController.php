@@ -21,4 +21,14 @@ class AdminLoginController extends Controller
             'login' => 'ログインに失敗しました。'
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/admin/login');
+    }
 }
