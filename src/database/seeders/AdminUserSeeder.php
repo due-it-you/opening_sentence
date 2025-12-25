@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\AdminUser;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserSeeder extends Seeder
 {
@@ -14,5 +15,11 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         AdminUser::factory()->count(1)->create();
+
+        DB::table('admin_users')->insert([
+            'name' => '管理',
+            'email' => 'example@example.com',
+            'password' => 'example-house'
+        ]);
     }
 }
