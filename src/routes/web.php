@@ -6,6 +6,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AuthSessionController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::get('/', function () {
     return view('top');
@@ -41,3 +42,7 @@ Route::get('/admin/login', function() {
 
 Route::post('/admin/login', [AdminLoginController::class, 'authenticate'])
         ->name('admin.login');
+
+Route::get('/admin/dashboard', function() {
+    return view('admin.dashboard');
+})->middleware(EnsureUserIsAdmin::class);
