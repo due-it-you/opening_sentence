@@ -6,6 +6,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\AuthSessionController;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Middleware\EnsureNotAuthenticated;
 use App\Http\Middleware\EnsureUserIsAdmin;
 
 Route::get('/', function () {
@@ -37,8 +38,9 @@ Route::resource('posts', PostController::class);
 
 ## 管理者関連のルーティング ##
 
-## 誰でもアクセス可能
+## いずれも認証していない場合のみアクセス可能
 Route::prefix('admin')
+    ->middleware(EnsureNotAuthenticated::class)
     ->group(function () {
         Route::get('/login', function () {
             return view('admin.login');
