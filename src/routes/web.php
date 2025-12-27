@@ -40,11 +40,11 @@ Route::resource('posts', PostController::class);
 ## 誰でもアクセス可能
 Route::prefix('admin')
     ->group(function () {
-        Route::get('/admin/login', function () {
+        Route::get('/login', function () {
             return view('admin.login');
         });
 
-        Route::post('/admin/login', [AdminLoginController::class, 'authenticate'])
+        Route::post('/login', [AdminLoginController::class, 'authenticate'])
             ->name('admin.login');
     });
 
