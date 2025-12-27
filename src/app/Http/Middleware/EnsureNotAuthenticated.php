@@ -14,6 +14,10 @@ class EnsureNotAuthenticated
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
+    /**
+     * ユーザーが認証していない状態であることを保証する
+     */
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::check() && !Auth::guard('admin')->check())
