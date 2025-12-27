@@ -36,17 +36,21 @@ Route::get('/posts/create', function () {
 Route::resource('posts', PostController::class);
 
 ## 管理者関連のルーティング ##
-Route::get('/admin/login', function() {
+Route::get('/admin/login', function () {
     return view('admin.login');
 });
 
 Route::post('/admin/login', [AdminLoginController::class, 'authenticate'])
-        ->name('admin.login');
+    ->name('admin.login');
 
-Route::get('/admin/dashboard', function() {
-    return view('admin.dashboard');
-})->middleware(EnsureUserIsAdmin::class);
+## 管理者として認証済の場合のみアクセス可能
+Route::prefix('admin')
+    ->middleware([EnsureUserIsAdmin::class])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('admin.dashboard');
+        });
 
-Route::post('/admin/logout', [AdminLoginController::class, 'logout'])
-        ->name('admin.logout')
-        ->middleware(EnsureUserIsAdmin::class);
+        Route::post('/logout', [AdminLoginController::class, 'logout'])
+            ->name('admin.logout');
+    });
