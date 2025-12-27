@@ -7,29 +7,25 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class EnsureUserIsAdmin
+class EnsureNotAuthenticated
 {
     /**
+     * Handle an incoming request.
+     *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
 
     /**
-     * ユーザーが管理者として認証済であることを保証
+     * ユーザーが認証していない状態であることを保証する
      */
     public function handle(Request $request, Closure $next): Response
     {
-        # 一般ユーザーとして認証済み -> 403エラー
-        if (Auth::check())
+        if (!Auth::check() && !Auth::guard('admin')->check())
         {
+            return $next($request);
+        } else {
             abort(403);
         }
 
-        # 管理者としてまだ認証済みではない -> 管理者ログインページへ
-        if (!Auth::guard('admin')->check())
-        {
-            return redirect('/admin/login');
-        }
-
-        return $next($request);
     }
 }
