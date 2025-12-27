@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class EnsureUserIsAdmin
 {
     /**
-     * ユーザーが管理者として認証済であることを保証
-     *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     */
+
+    /**
+     * ユーザーが管理者として認証済であることを保証
      */
     public function handle(Request $request, Closure $next): Response
     {
