@@ -16,6 +16,13 @@ class EnsureUserIsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        # 一般ユーザーとして認証済み -> 403エラー
+        if (Auth::check())
+        {
+            abort(403);
+        }
+
+        # いずれも認証していない -> 管理者ログインページへ
         if (!Auth::guard('admin')->check())
         {
             return redirect('/admin/login');
