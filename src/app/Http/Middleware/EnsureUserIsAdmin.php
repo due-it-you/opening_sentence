@@ -22,7 +22,7 @@ class EnsureUserIsAdmin
             abort(403);
         }
 
-        # いずれも認証していない -> 管理者ログインページへ
+        # 管理者としてまだ認証済みではない -> 管理者ログインページへ
         if (!Auth::guard('admin')->check())
         {
             return redirect('/admin/login');
