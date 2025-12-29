@@ -28,6 +28,7 @@ class SignupControllerTest extends TestCase
         ]);
 
         $response->assertValid();
+        $this->assertAuthenticated();
         $response->assertRedirect('/');
         $this->assertDatabaseHas('users', $valid_signup_input_hash);
     }
