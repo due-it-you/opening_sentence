@@ -28,7 +28,7 @@ class SignupControllerTest extends TestCase
             'password' => 'test_password'
         ]);
 
-        $response->assertValid();
+        $response->assertValid(['name', 'email', 'password']);
         $this->assertAuthenticated();
         $response->assertRedirect('/');
         $response->assertSessionHasNoErrors();
@@ -51,7 +51,7 @@ class SignupControllerTest extends TestCase
 
         $response = $this->post('/signup', $invalid_user_signup_input);
 
-        $response->assertInvalid();
+        $response->assertInvalid(['name', 'email', 'password']);
         $this->assertGuest();
         $response->assertSessionHasErrors(['name', 'email', 'password']);
         $response->assertRedirectBack();
