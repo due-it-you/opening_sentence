@@ -10,7 +10,8 @@ class SignupControllerTest extends TestCase
 {
     use RefreshDatabase;
     /**
-     * 一般ユーザーとして新規登録が完了した場合のテスト
+     * 正常系：
+     * 有効な値で新規登録処理を行った場合のテスト
      */
     /** @test */
     public function signupWithValidInput(): void
@@ -29,5 +30,23 @@ class SignupControllerTest extends TestCase
         $response->assertValid();
         $response->assertRedirect('/');
         $this->assertDatabaseHas('users', $valid_signup_input_hash);
+    }
+
+    /**
+     * 異常系：
+     * 不正な値で新規登録処理を行った場合のテスト
+     */
+    /** @test */
+    public function trySignupWithInvalidInput(): void 
+    {
+        $response = $this->post('/signup', [
+            'name' => '',
+            'email' => '',
+            'password' => ''
+        ]);
+
+        $response->assertInvalid();
+        $this->assertGuest();
+        $response->assertRedirectBack();
     }
 }
