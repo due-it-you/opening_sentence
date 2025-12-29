@@ -3,6 +3,7 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\AdminUser;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
@@ -61,5 +62,27 @@ class AdminUserAuthControllerTest extends TestCase
             'login' => 'ログインに失敗しました。'
         ]);
         $this->assertGuest();
+    }
+
+    /**
+     * 正常系：
+     * 管理者ユーザーとしてログアウトに成功した場合
+     */
+    public function test_admin_user_logout(): void
+    {
+        Auth::guard('web')->logout();
+        $this->flushSession();
+
+        # 準備
+        $guard = 'admin';
+        /** @var \Illuminate\Contracts\Auth\Authenticatable $admin_user */
+        $admin_user = AdminUser::factory()->create();
+
+        # HTTPリクエスト
+        $response = $this->actingAs($admin_user, $guard)->post('/admin/logout');
+
+        # アサーション
+        $response->assertRedirect('/admin/login');
+        $this->assertGuest('admin');
     }
 }
