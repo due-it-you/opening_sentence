@@ -24,10 +24,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::post('/login', [AuthSessionController::class, 'authenticate'])
+Route::post('/login', [UserAuthController::class, 'authenticate'])
     ->name('login.authenticate');
 
-Route::post('/logout', [AuthSessionController::class, 'logout'])
+Route::post('/logout', [UserAuthController::class, 'logout'])
     ->name('logout');
 
 Route::get('/posts/create', function () {
