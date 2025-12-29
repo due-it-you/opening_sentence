@@ -30,6 +30,7 @@ class SignupControllerTest extends TestCase
         $response->assertValid();
         $this->assertAuthenticated();
         $response->assertRedirect('/');
+        $response->assertSessionHasNoErrors();
         $this->assertDatabaseHas('users', $valid_signup_input_hash);
     }
 
@@ -40,15 +41,18 @@ class SignupControllerTest extends TestCase
     /** @test */
     public function trySignupWithInvalidInput(): void
     {
-        $response = $this->post('/signup', [
+        $invalid_user_signup_input = [
             'name' => '',
             'email' => '',
             'password' => ''
-        ]);
+        ];
+
+        $response = $this->post('/signup', $invalid_user_signup_input);
 
         $response->assertInvalid();
         $this->assertGuest();
         $response->assertSessionHasErrors(['name', 'email', 'password']);
         $response->assertRedirectBack();
+        $this->assertDatabaseMissing('users', $invalid_user_signup_input);
     }
 }
