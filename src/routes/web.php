@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SignupController;
-use App\Http\Controllers\AuthSessionController;
-use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\AdminUserAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\EnsureNotAuthenticated;
 use App\Http\Middleware\EnsureUserIsAdmin;
