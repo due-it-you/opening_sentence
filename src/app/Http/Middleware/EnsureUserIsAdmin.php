@@ -19,7 +19,7 @@ class EnsureUserIsAdmin
     public function handle(Request $request, Closure $next): Response
     {
         # 一般ユーザーとして認証済み -> 403エラー
-        if (Auth::check())
+        if (Auth::guard('web')->check())
         {
             abort(403);
         }
