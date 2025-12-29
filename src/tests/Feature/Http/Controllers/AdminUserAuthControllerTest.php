@@ -70,9 +70,6 @@ class AdminUserAuthControllerTest extends TestCase
      */
     public function test_admin_user_logout(): void
     {
-        Auth::guard('web')->logout();
-        $this->flushSession();
-
         # 準備
         $guard = 'admin';
         /** @var \Illuminate\Contracts\Auth\Authenticatable $admin_user */
