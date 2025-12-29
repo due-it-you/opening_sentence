@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserAuthControllerTest extends TestCase
 {
@@ -62,5 +63,22 @@ class UserAuthControllerTest extends TestCase
         $response->assertSessionHasErrors([
             'login' => 'メールアドレスまたはパスワードが正しくありません。'
         ]);
+    }
+
+    /**
+     * 一般ユーザーのログアウト処理のテスト
+     */
+    public function test_user_logout(): void
+    {
+        # 準備
+        $user = User::factory()->create();
+        Auth::login($user);
+
+        # HTTPリクエスト
+        $response = $this->post('/logout');
+
+        # アサーション
+        $this->assertGuest();
+        $response->assertRedirect('/');
     }
 }
