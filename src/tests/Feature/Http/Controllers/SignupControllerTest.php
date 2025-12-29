@@ -38,7 +38,7 @@ class SignupControllerTest extends TestCase
      * 不正な値で新規登録処理を行った場合のテスト
      */
     /** @test */
-    public function trySignupWithInvalidInput(): void 
+    public function trySignupWithInvalidInput(): void
     {
         $response = $this->post('/signup', [
             'name' => '',
@@ -48,6 +48,7 @@ class SignupControllerTest extends TestCase
 
         $response->assertInvalid();
         $this->assertGuest();
+        $response->assertSessionHasErrors(['name', 'email', 'password']);
         $response->assertRedirectBack();
     }
 }
