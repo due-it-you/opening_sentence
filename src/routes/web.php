@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\SignupController;
-use App\Http\Controllers\AuthSessionController;
-use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\AdminUserAuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Middleware\EnsureNotAuthenticated;
 use App\Http\Middleware\EnsureUserIsAdmin;
@@ -24,10 +24,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::post('/login', [AuthSessionController::class, 'authenticate'])
+Route::post('/login', [UserAuthController::class, 'authenticate'])
     ->name('login.authenticate');
 
-Route::post('/logout', [AuthSessionController::class, 'logout'])
+Route::post('/logout', [UserAuthController::class, 'logout'])
     ->name('logout');
 
 Route::get('/posts/create', function () {
@@ -46,7 +46,7 @@ Route::prefix('admin')
             return view('admin.login');
         });
 
-        Route::post('/login', [AdminLoginController::class, 'authenticate'])
+        Route::post('/login', [AdminUserAuthController::class, 'authenticate'])
             ->name('admin.login');
     });
 
@@ -59,6 +59,6 @@ Route::prefix('admin')
             return view('admin.dashboard');
         });
 
-        Route::post('/logout', [AdminLoginController::class, 'logout'])
+        Route::post('/logout', [AdminUserAuthController::class, 'logout'])
             ->name('admin.logout');
     });
