@@ -46,7 +46,7 @@ Route::prefix('admin')
             return view('admin.login');
         });
 
-        Route::post('/login', [AdminLoginController::class, 'authenticate'])
+        Route::post('/login', [AdminUserAuthController::class, 'authenticate'])
             ->name('admin.login');
     });
 
@@ -59,6 +59,6 @@ Route::prefix('admin')
             return view('admin.dashboard');
         });
 
-        Route::post('/logout', [AdminLoginController::class, 'logout'])
+        Route::post('/logout', [AdminUserAuthController::class, 'logout'])
             ->name('admin.logout');
     });

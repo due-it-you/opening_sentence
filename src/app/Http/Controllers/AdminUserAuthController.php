@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginAuthenticateRequest;
 use Illuminate\Support\Facades\Auth;
 
-class AdminLoginController extends Controller
+class AdminUserAuthController extends Controller
 {
     public function authenticate(LoginAuthenticateRequest $request)
     {
@@ -25,7 +25,7 @@ class AdminLoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('admin')->logout();
-        
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
