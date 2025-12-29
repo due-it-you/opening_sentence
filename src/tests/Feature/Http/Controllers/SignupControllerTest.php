@@ -33,6 +33,7 @@ class SignupControllerTest extends TestCase
         $response->assertRedirect('/');
         $response->assertSessionHasNoErrors();
         $this->assertDatabaseHas('users', $valid_signup_input_hash);
+        $this->assertDatabaseCount('users', 1);
     }
 
     /**
@@ -54,6 +55,6 @@ class SignupControllerTest extends TestCase
         $this->assertGuest();
         $response->assertSessionHasErrors(['name', 'email', 'password']);
         $response->assertRedirectBack();
-        $this->assertDatabaseMissing('users', $invalid_user_signup_input);
+        $this->assertDatabaseCount('users', 0);
     }
 }
