@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class SignupControllerTest extends TestCase
 {
+    # テストケースごとに全てのテーブルを初期状態に戻す
     use RefreshDatabase;
     /**
      * 正常系：
