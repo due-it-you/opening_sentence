@@ -4,6 +4,7 @@
 
 @section('content')
     <div>
+        <!-- 投稿一覧表示 -->
         @foreach ($posts as $post)
             <div class="flex space-y-4 mt-4">
                 <div class="border">
