@@ -12,15 +12,7 @@
       <form method="POST" action="{{ route('signup.store') }}">
         @csrf
         <!-- エラーメッセージの表示 -->
-        @if ($errors->any())
-          <div>
-            <ul>
-              @foreach ($errors->all() as $error)
-                <li class="text-red-600">{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-        @endif
+        <x-alert :$errors />
         <div>
           <label for="name">ユーザーネーム</label>
           <input id="name" name="name" type="text" class="border border-gray-600">
