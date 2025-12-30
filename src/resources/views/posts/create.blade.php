@@ -3,6 +3,7 @@
 @section('title', '投稿作成')
 
 @section('content')
+    <!-- エラーメッセージの表示 -->
     <x-alert :$errors />
     <div>
         投稿作成フォーム
