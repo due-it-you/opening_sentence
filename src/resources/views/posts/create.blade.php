@@ -7,6 +7,7 @@
     <x-alert :$errors />
     <div>
         投稿作成フォーム
+        <!-- 投稿作成フォーム -->
         <form method="POST" action="{{ route('posts.store') }}">
             @csrf
             <div>

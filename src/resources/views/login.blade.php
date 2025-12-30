@@ -5,6 +5,7 @@
 @section('content')
     <div>
         ログイン
+        <!-- ログインフォーム -->
         <form action="{{ route('login.authenticate') }}" method="POST">
             @csrf
             <div>
