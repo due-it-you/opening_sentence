@@ -4,6 +4,17 @@
 
 @section('content')
     <div>
+        <div>
+            <!-- 検索フォーム -->
+            <form action="{{ route('posts.index') }}" method="GET">
+                @csrf
+                <div>
+                    <label for="keyword">本文検索：</label>
+                    <input type="text" name="keyword" id="keyword" class="border">
+                </div>
+                <input type="submit" class="border">
+            </form>
+        </div>
         <!-- 投稿一覧表示 -->
         @foreach ($posts as $post)
             <div class="flex space-y-4 mt-4">
