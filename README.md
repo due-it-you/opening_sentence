@@ -2,7 +2,7 @@
 - WSL2上でのLAMP環境のDocker構築
 - FastCGIを用いたApacheとphp-fpmの通信
 - 認証機能(Authファサードを用いたログイン・ログアウト)
-- 認可(Policy, Middleware)
+- 認可(Policy/Gate, Middleware, Guard/Provider)
 - CRUD機能(ルーティング, MVC, フォームリクエストにおける独自のバリデーションやエラーメッセージ, ルートモデルバインディング, フォーム, Blade, フラッシュメッセージやバリデーションエラーメッセージの表示, マイグレーション)
 - PHPUnitでの機能テスト
 - Factory / Seederでの初期データの投入
