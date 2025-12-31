@@ -10,6 +10,7 @@
 
 @section('content')
   <div>
+    <!-- 成功のフラッシュメッセージの表示 -->
     @if (session('success'))
       <div class="text-green-400">
         {{ session('success') }}
