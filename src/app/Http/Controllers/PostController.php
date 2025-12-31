@@ -11,9 +11,19 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        $keyword = $request->keyword;
+        $escaped_target = '%_\\';
+
+        # 検索ワードが入力された場合に一致する投稿を検索
+        if ($keyword) {
+            # ワイルドカードをエスケープして文字列として認識させる
+            $pattern = '%' . addcslashes($keyword, $escaped_target) . '%';
+            $posts = Post::query()->where('body', 'LIKE', $pattern)->get();
+        } else {
+            $posts = Post::all();
+        }
 
         return view('posts.index', compact('posts'));
     }
