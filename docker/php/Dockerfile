@@ -2,7 +2,7 @@
 FROM php:8.3-fpm AS base
 
 # パッケージインストール
-RUN apt-get update && apt-get install -y \
+RUN apt update && apt install -y \
     git \
     curl \
     libpng-dev \
