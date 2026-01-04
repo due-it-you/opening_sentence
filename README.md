@@ -8,6 +8,9 @@
 - Factory / Seederでの初期データの投入
 - Blade Componentsでの一部表示箇所の再利用化
 - 投稿検索機能
+- AWSへのデプロイ
+(※1/4時点でApache, php-fpmの連携は確認できたがDB接続で苦戦中。マイグレーションが出来ていないことが原因だと思われるため、再挑戦します。)
+(ECR, ECS on Fargate, IGW, RDSの構成)
 
 ## その他就業までに行ったこと
 - SQL, Dockerの復習
